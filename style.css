@@ -30,7 +30,7 @@ body {
     grid-template-rows: repeat(var(--rowNum), auto);
     grid-template-areas:
         "display display display display"
-        ". . clear backspace"
+        "root percentage clear backspace"
         "seven eight nine divide"
         "four five six multiply"
         "one two three subtract"
@@ -40,7 +40,7 @@ body {
 .calcDisplay {
     display: grid;
     grid-area: display;
-    height: 42px;
+    height: 82px;
     margin: 4px;
     background-color: black;
 }
@@ -113,6 +113,18 @@ body {
     grid-area: divide;
 }
 
+#root {
+    grid-area: root;
+    align-content: center;
+    justify-content: center;
+}
+
+#percentage {
+    grid-area: percentage;
+    align-content: center;
+    justify-content: center;
+}
+
 .calcButton {
     display: grid;
     border: 1px solid black;
@@ -125,6 +137,8 @@ body {
 
 #delete {
     grid-area: backspace;
+    align-content: center;
+    justify-content: center;
 }
 
 #decimal {
