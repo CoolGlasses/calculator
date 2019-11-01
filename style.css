@@ -1,3 +1,14 @@
+:root {
+    --colNum = 4;
+    --rowNum = 6;
+}
+
+header {
+    display: grid;
+    justify-content: center;
+    border: 1px solid black;
+}
+
 body {
     background-color: papayawhip;
 }
@@ -5,33 +16,126 @@ body {
 #container {
     display: grid;
     justify-content: center;
+    font-size: 40px;
 }
 
 .calc {
     display: grid;
     background-color: gray;
     border-radius: 30px;
+    text-align: center;
     height: 400px;
     width: 400px;
-    justify-content: center;
-}
-
-.calcNumber {
-    display: grid;
+    border: 1px solid black;
+    grid-template-columns: repeat(var(--colNum), auto);
+    grid-template-rows: repeat(var(--rowNum), auto);
+    grid-template-areas:
+        "display display display display"
+        ". . clear backspace"
+        "seven eight nine divide"
+        "four five six multiply"
+        "one two three subtract"
+        "zero period equals add";
 }
 
 .calcDisplay {
     display: grid;
+    border: 1px solid black;
+    grid-area: display;
+}
+
+.calcNumber {
+    display: grid;
+    border: 1px solid black;
+}
+
+[id="0"] {
+    grid-area: zero;
+}
+
+[id="1"] {
+    grid-area: one;
+}
+
+[id="2"] {
+    grid-area: two;
+}
+
+[id="3"] {
+    grid-area: three;
+}
+
+[id="4"] {
+    grid-area: four;
+}
+
+[id="5"] {
+    grid-area: five;
+}
+
+[id="6"] {
+    grid-area: six;
+}
+
+[id="7"] {
+    grid-area: seven;
+}
+
+[id="8"] {
+    grid-area: eight;
+}
+
+[id="9"] {
+    grid-area: nine;
 }
 
 .calcOperand {
     display: grid;
+    border: 1px solid black;
+}
+
+#add {
+    grid-area: add;
+}
+
+#subtract {
+    grid-area: subtract;
+}
+
+#multiply {
+    grid-area: multiply;
+}
+
+#divide {
+    grid-area: divide;
 }
 
 .calcButton {
     display: grid;
+    border: 1px solid black;
+}
+
+#clear {
+    grid-area: clear;
+}
+
+#delete {
+    grid-area: backspace;
+}
+
+#decimal {
+    grid-area: period;
 }
 
 .resultButton {
     display: grid;
+    border: 1px solid black;
+}
+
+#equals {
+    grid-area: equals;
+}
+
+footer {
+    border: 1px solid black;
 }
