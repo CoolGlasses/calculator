@@ -22,7 +22,6 @@ body {
 .calc {
     display: grid;
     background-color: gray;
-    border-radius: 30px;
     text-align: center;
     height: 400px;
     width: 400px;
@@ -40,13 +39,16 @@ body {
 
 .calcDisplay {
     display: grid;
-    border: 1px solid black;
     grid-area: display;
+    height: 42px;
+    margin: 4px;
+    background-color: black;
 }
 
 .calcNumber {
     display: grid;
     border: 1px solid black;
+    align-content: center;
 }
 
 [id="0"] {
@@ -92,6 +94,7 @@ body {
 .calcOperand {
     display: grid;
     border: 1px solid black;
+    align-content: center;
 }
 
 #add {
@@ -113,6 +116,7 @@ body {
 .calcButton {
     display: grid;
     border: 1px solid black;
+    align-content: center;
 }
 
 #clear {
@@ -130,6 +134,7 @@ body {
 .resultButton {
     display: grid;
     border: 1px solid black;
+    align-content: center;
 }
 
 #equals {
