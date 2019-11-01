@@ -43,12 +43,18 @@ body {
     height: 82px;
     margin: 4px;
     background-color: black;
+    color: white;
 }
 
 .calcNumber {
     display: grid;
     border: 1px solid black;
     align-content: center;
+}
+
+.calcNumber:hover {
+    background-color: black;
+    color: white;
 }
 
 [id="0"] {
@@ -95,6 +101,11 @@ body {
     display: grid;
     border: 1px solid black;
     align-content: center;
+    background-color: darkgoldenrod;
+}
+
+.calcOperand:hover {
+    background-color: gold;
 }
 
 #add {
@@ -131,24 +142,42 @@ body {
     align-content: center;
 }
 
+
 #clear {
     grid-area: clear;
+    background-color: tan;
 }
-
+#clear:hover {
+    background-color: beige;
+}
 #delete {
     grid-area: backspace;
     align-content: center;
     justify-content: center;
+    background-color: maroon;
+}
+
+#delete:hover {
+    background-color: red;
 }
 
 #decimal {
     grid-area: period;
 }
 
+#decimal:hover{
+    background-color: black;
+    color: white;
+}
+
 .resultButton {
     display: grid;
     border: 1px solid black;
     align-content: center;
+}
+
+.resultButton:hover {
+    background-color: forestgreen;
 }
 
 #equals {
