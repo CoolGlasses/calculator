@@ -1,0 +1,37 @@
+body {
+    background-color: papayawhip;
+}
+
+#container {
+    display: grid;
+    justify-content: center;
+}
+
+.calc {
+    display: grid;
+    background-color: gray;
+    border-radius: 30px;
+    height: 400px;
+    width: 400px;
+    justify-content: center;
+}
+
+.calcNumber {
+    display: grid;
+}
+
+.calcDisplay {
+    display: grid;
+}
+
+.calcOperand {
+    display: grid;
+}
+
+.calcButton {
+    display: grid;
+}
+
+.resultButton {
+    display: grid;
+}
