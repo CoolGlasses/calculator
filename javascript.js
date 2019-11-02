@@ -72,6 +72,15 @@ function clearDisplay(displayValue) {
 }
 
 
+
+
+
+
+
+
+
+
+
 document.getElementById("0").addEventListener( function () {
 
 });
