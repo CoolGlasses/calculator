@@ -58,15 +58,24 @@ function clearDisplay(displayValue) {
 
 function showDisplay(expressionArray) {
     let displayBar = document.querySelector("#dispaly");
-    displayBar.textContent = expressionArray.join(" ");
+    let finalExpressionArray = [];
+    let expression = "";
+
+    for (let i = 0; i < expressionArray.length; i++){
+        let isOperand = (expressionArray[i] == "+" || expressionArray[i] == "-" || expressionArray[i] == "/" || expressionArray[i] == "*");
+        if (isOperand == true && expression != "") {
+            finalExpressionArray.push(expression);
+            finalExpressionArray.push(expressionArray[i]);
+            expression = "";
+        } else if (i == expressionArray.length - 1) {
+            finalExpressionArray.push(expression);
+        } else {
+            expression += expressionArray[i];
+        }
+    }
+    
+    displayBar.textContent = finalExpressionArray.join(" ");
 }
-
-
-
-
-
-
-
 
 
 document.getElementById("0").addEventListener( function () {
@@ -81,6 +90,10 @@ document.getElementById("6").addEventListener();
 document.getElementById("7").addEventListener();
 document.getElementById("8").addEventListener();
 document.getElementById("9").addEventListener();
+
+
+
+
 document.getElementById("add").addEventListener();
 document.getElementById("subtract").addEventListener();
 document.getElementById("multiply").addEventListener();
