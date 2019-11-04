@@ -21,6 +21,7 @@ body {
 
 .calc {
     display: grid;
+    
     background-color: gray;
     text-align: center;
     height: 400px;
@@ -51,6 +52,7 @@ body {
     display: grid;
     border: 1px solid black;
     align-content: center;
+    cursor: pointer;
 }
 
 .calcNumber:hover {
@@ -103,6 +105,7 @@ body {
     border: 1px solid black;
     align-content: center;
     background-color: darkgoldenrod;
+    cursor: pointer;
 }
 
 .calcOperand:hover {
@@ -141,6 +144,7 @@ body {
     display: grid;
     border: 1px solid black;
     align-content: center;
+    cursor: pointer;
 }
 
 
@@ -175,6 +179,7 @@ body {
     display: grid;
     border: 1px solid black;
     align-content: center;
+    cursor: pointer;
 }
 
 .resultButton:hover {
