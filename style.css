@@ -45,6 +45,7 @@ body {
     background-color: black;
     color: white;
     font-size: 32px;
+    align-content: center;
 }
 
 .calcNumber {

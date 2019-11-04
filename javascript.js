@@ -1,5 +1,5 @@
 let expressionArray = [];
-let answer = 0;
+
 
 function add(num1, num2) {
     return num1 + num2;
@@ -62,9 +62,12 @@ function showDisplay(expressionArray) {
     displayBar.textContent = expressionArray.join("");
 }
 
-function evaluateExpression(finalExpressionArray) { //accepts an array like this:  [456, " + ", 789, " * ", 123]
+function evaluateExpression(finalExpressionArray) { 
+    //accepts an array like this:  [456, " + ", 789, " * ", 123]
+    //accepts sqrt like this: [ 1, " + ", "sqrt( ", 5, " )"]
     let displayBar = document.querySelector("#display");
     let finished = false;
+    let answer = 0;
 
     while (!finished) { 
         finished = true;
@@ -72,13 +75,22 @@ function evaluateExpression(finalExpressionArray) { //accepts an array like this
         let indexOfDivide = finalExpressionArray.indexOf(" / ");
         let indexOfAdd = finalExpressionArray.indexOf(" + ");
         let indexOfSubtract = finalExpressionArray.indexOf(" - ");
+        let indexOfRoot = finalExpressionArray.indexOf(" sqrt( ");
 
-        if (indexOfMultiply != -1) {
-            answer += finalExpressionArray[indexOfMultiply - 1] * finalExpressionArray[indexOfMultiply + 1];
+        if (indexOfRoot != -1) {
+            answer = Math.sqrt(finalExpressionArray[indexOfRoot + 1]);
+            answer = +answer.toFixed(5);
+            finalExpressionArray.splice(indexOfRoot, 1);
+            finalExpressionArray.splice(indexOfRoot, 1);
+            finalExpressionArray.splice(indexOfRoot, 1);
+            finalExpressionArray.splice(indexOfRoot, 0, answer);
+            finished = false;
+        } else if (indexOfMultiply != -1) {
+            answer = finalExpressionArray[indexOfMultiply - 1] * finalExpressionArray[indexOfMultiply + 1];
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
-            finalExpressionArray.splice(indexOfMultiply, 1, answer);
+            finalExpressionArray.splice(indexOfMultiply, 0, answer);
             finished = false;
         } else if (indexOfDivide != -1) {
             if (finalExpressionArray[indexOfDivide + 1] == 0) {
@@ -86,22 +98,25 @@ function evaluateExpression(finalExpressionArray) { //accepts an array like this
                 alert("Cannot divide by zero!");
                 return displayBar.textContent = "ERROR";
             }
-            answer += finalExpressionArray[indexOfDivide - 1] / finalExpressionArray[indexOfDivide + 1];
+            answer = finalExpressionArray[indexOfDivide - 1] / finalExpressionArray[indexOfDivide + 1];
             finalExpressionArray.splice(indexOfDivide - 1, 1);
             finalExpressionArray.splice(indexOfDivide - 1, 1);
-            finalExpressionArray.splice(indexOfDivide, 1, answer);
+            finalExpressionArray.splice(indexOfDivide - 1, 1);
+            finalExpressionArray.splice(indexOfDivide, 0, answer);
             finished = false;
         } else if (indexOfAdd != -1) {
-            answer += finalExpressionArray[indexOfAdd - 1] + finalExpressionArray[indexOfAdd + 1];
+            answer = finalExpressionArray[indexOfAdd - 1] + finalExpressionArray[indexOfAdd + 1];
             finalExpressionArray.splice(indexOfAdd - 1, 1);
             finalExpressionArray.splice(indexOfAdd - 1, 1);
-            finalExpressionArray.splice(indexOfAdd, 1, answer);
+            finalExpressionArray.splice(indexOfAdd - 1, 1);
+            finalExpressionArray.splice(indexOfAdd, 0, answer);
             finished = false;
         } else if (indexOfSubtract != -1) {
-            answer += finalExpressionArray[indexOfSubtract - 1] - finalExpressionArray[indexOfSubtract + 1];
+            answer = finalExpressionArray[indexOfSubtract - 1] - finalExpressionArray[indexOfSubtract + 1];
             finalExpressionArray.splice(indexOfSubtract - 1, 1);
             finalExpressionArray.splice(indexOfSubtract - 1, 1);
-            finalExpressionArray.splice(indexOfSubtract, 1, answer);
+            finalExpressionArray.splice(indexOfSubtract - 1, 1);
+            finalExpressionArray.splice(indexOfSubtract, 0, answer);
             finished = false;
         }
     }
@@ -114,8 +129,20 @@ document.getElementById("equals").addEventListener("click", function () {
     let expression = "";
 
     for (let i = 0; i < expressionArray.length; i++) {
-        let isOperand = (expressionArray[i] == " + " || expressionArray[i] == " - " || expressionArray[i] == " / " || expressionArray[i] == " * ");
-        if (isOperand == true && expression != "") {
+        let isOperand = (expressionArray[i] == " + " || expressionArray[i] == " - " || 
+                        expressionArray[i] == " / " || expressionArray[i] == " * " );
+        let isRoot = (expressionArray[i] == " sqrt( ");
+        let endRoot = (expressionArray[i] == " ) ");
+
+        if (isRoot == true) {
+            finalExpressionArray.push(expressionArray[i]);
+        } else if (endRoot == true) {
+            finalExpressionArray.push(parseInt(expression, 10));
+            finalExpressionArray.push(expressionArray[i]);
+            expression = "";
+        } else if (isOperand == true && expression == "") {
+            finalExpressionArray.push(expressionArray[i]);
+        } else if (isOperand == true && expression != "") {
             finalExpressionArray.push(parseInt(expression, 10));
             finalExpressionArray.push(expressionArray[i]);
             expression = "";
@@ -129,6 +156,20 @@ document.getElementById("equals").addEventListener("click", function () {
 
     evaluateExpression(finalExpressionArray);
 });
+
+document.getElementById("root").addEventListener("click", function () {
+    if (expressionArray.length == 0) {
+        expressionArray.push("sqrt( ");
+        expressionArray.push("0 ");
+        expressionArray.push(" ) ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.splice(expressionArray.length - 2, 0, " sqrt( ");
+        expressionArray.push(" ) ");
+        showDisplay(expressionArray);
+    }
+});
+
 
 
 
@@ -238,8 +279,8 @@ document.getElementById("delete").addEventListener("click", function(){
     }
  });
 
- 
-// document.getElementById("root").addEventListener("click", function(){ });
+
+
 // document.getElementById("percent").addEventListener("click", function(){ });
 // document.getElementById("decimal").addEventListener("click", function(){ });
 
