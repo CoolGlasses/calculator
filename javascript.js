@@ -87,10 +87,7 @@ function evaluateExpression(finalExpressionArray) {
             finished = false;
         } else if (indexOfMultiply != -1) {
             answer = finalExpressionArray[indexOfMultiply - 1] * finalExpressionArray[indexOfMultiply + 1];
-            finalExpressionArray.splice(indexOfMultiply - 1, 1);
-            finalExpressionArray.splice(indexOfMultiply - 1, 1);
-            finalExpressionArray.splice(indexOfMultiply - 1, 1);
-            finalExpressionArray.splice(indexOfMultiply - 1, 0, answer);
+            finalExpressionArray = spliceSaver(finalExpressionArray, indexOfMultiply, answer);
             finished = false;
         } else if (indexOfDivide != -1) {
             if (finalExpressionArray[indexOfDivide + 1] == 0) {
@@ -99,29 +96,28 @@ function evaluateExpression(finalExpressionArray) {
                 return displayBar.textContent = "ERROR";
             }
             answer = finalExpressionArray[indexOfDivide - 1] / finalExpressionArray[indexOfDivide + 1];
-            finalExpressionArray.splice(indexOfDivide - 1, 1);
-            finalExpressionArray.splice(indexOfDivide - 1, 1);
-            finalExpressionArray.splice(indexOfDivide - 1, 1);
-            finalExpressionArray.splice(indexOfDivide - 1, 0, answer);
+            finalExpressionArray = spliceSaver(finalExpressionArray, indexOfDivide, answer);
             finished = false;
         } else if (indexOfAdd != -1) {
             answer = finalExpressionArray[indexOfAdd - 1] + finalExpressionArray[indexOfAdd + 1];
-            finalExpressionArray.splice(indexOfAdd - 1, 1);
-            finalExpressionArray.splice(indexOfAdd - 1, 1);
-            finalExpressionArray.splice(indexOfAdd - 1, 1);
-            finalExpressionArray.splice(indexOfAdd - 1, 0, answer);
+            finalExpressionArray = spliceSaver(finalExpressionArray, indexOfAdd, answer);
             finished = false;
         } else if (indexOfSubtract != -1) {
             answer = finalExpressionArray[indexOfSubtract - 1] - finalExpressionArray[indexOfSubtract + 1];
-            finalExpressionArray.splice(indexOfSubtract - 1, 1);
-            finalExpressionArray.splice(indexOfSubtract - 1, 1);
-            finalExpressionArray.splice(indexOfSubtract - 1, 1);
-            finalExpressionArray.splice(indexOfSubtract - 1, 0, answer);
+            finalExpressionArray = spliceSaver(finalExpressionArray, indexOfSubtract, answer);
             finished = false;
         }
     }
     displayBar.textContent = answer;
     expressionArray = [];
+}
+
+function spliceSaver(arrayToSplice, indexToSpliceFrom, answerToInsert){
+    arrayToSplice.splice(indexToSpliceFrom - 1, 1);
+    arrayToSplice.splice(indexToSpliceFrom - 1, 1);
+    arrayToSplice.splice(indexToSpliceFrom - 1, 1);
+    arrayToSplice.splice(indexToSpliceFrom - 1, 0, answerToInsert);
+    return arrayToSplice;
 }
 
 document.getElementById("equals").addEventListener("click", function () {
