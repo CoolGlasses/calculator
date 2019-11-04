@@ -233,7 +233,12 @@ document.getElementById("9").addEventListener("click", function(){
     showDisplay(expressionArray);
 });
 
-document.getElementById("add").addEventListener("click", function(){
+document.getElementById("add").addEventListener("click", addButton);
+document.getElementById("subtract").addEventListener("click", subtractButton);
+document.getElementById("multiply").addEventListener("click", multiplyButton);
+document.getElementById("divide").addEventListener("click", divideButton);
+
+function addButton(){
     if (expressionArray.length == 0) {
         expressionArray.push("0");
         expressionArray.push(" + ");
@@ -242,9 +247,9 @@ document.getElementById("add").addEventListener("click", function(){
         expressionArray.push(" + ");
         showDisplay(expressionArray);
     }
-});
+}
 
-document.getElementById("subtract").addEventListener("click", function(){
+function subtractButton(){
     if (expressionArray.length == 0) {
         expressionArray.push("0");
         expressionArray.push(" - ");
@@ -253,9 +258,9 @@ document.getElementById("subtract").addEventListener("click", function(){
         expressionArray.push(" - ");
         showDisplay(expressionArray);
     }
-});
+}
 
-document.getElementById("multiply").addEventListener("click", function(){
+function multiplyButton(){
     if (expressionArray.length == 0) {
         expressionArray.push("0");
         expressionArray.push(" * ");
@@ -264,9 +269,9 @@ document.getElementById("multiply").addEventListener("click", function(){
         expressionArray.push(" * ");
         showDisplay(expressionArray);
     }
-});
+}
 
-document.getElementById("divide").addEventListener("click", function(){
+function divideButton(){
     if (expressionArray.length == 0) {
         expressionArray.push("0");
         expressionArray.push(" / ");
@@ -275,7 +280,8 @@ document.getElementById("divide").addEventListener("click", function(){
         expressionArray.push(" / ");
         showDisplay(expressionArray);
     }
-});
+
+}
 
 document.getElementById("clear").addEventListener("click", function(){
    clearDisplay();
