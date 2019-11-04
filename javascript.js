@@ -1,4 +1,5 @@
 let expressionArray = [];
+let answer = 0;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -63,7 +64,6 @@ function showDisplay(expressionArray) {
 
 function evaluateExpression(finalExpressionArray) { //accepts an array like this:  [456, " + ", 789, " * ", 123]
     let displayBar = document.querySelector("#display");
-    let answer = 0;
     let finished = false;
 
     while (!finished) { 
@@ -231,7 +231,14 @@ document.getElementById("clear").addEventListener("click", function(){
    clearDisplay();
 });
 
-// document.getElementById("delete").addEventListener("click", function(){ });
+document.getElementById("delete").addEventListener("click", function(){
+    if (expressionArray.length != 0) {
+        expressionArray.pop();
+        showDisplay(expressionArray);
+    }
+ });
+
+ 
 // document.getElementById("root").addEventListener("click", function(){ });
 // document.getElementById("percent").addEventListener("click", function(){ });
 // document.getElementById("decimal").addEventListener("click", function(){ });
