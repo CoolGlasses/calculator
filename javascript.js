@@ -64,7 +64,7 @@ function showDisplay(expressionArray) {
 
 function evaluateExpression(finalExpressionArray) { 
     //accepts an array like this:  [456, " + ", 789, " * ", 123]
-    //accepts sqrt like this: [ 1, " + ", "sqrt( ", 5, " )"]
+    //accepts sqrt like this: [ 1, " + ", "sqrt( ", 5, " )"] or [" sqrt( ", 4, " ) ", " + ", 2]
     let displayBar = document.querySelector("#display");
     let finished = false;
     let answer = 0;
@@ -90,7 +90,7 @@ function evaluateExpression(finalExpressionArray) {
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
             finalExpressionArray.splice(indexOfMultiply - 1, 1);
-            finalExpressionArray.splice(indexOfMultiply, 0, answer);
+            finalExpressionArray.splice(indexOfMultiply - 1, 0, answer);
             finished = false;
         } else if (indexOfDivide != -1) {
             if (finalExpressionArray[indexOfDivide + 1] == 0) {
@@ -102,21 +102,21 @@ function evaluateExpression(finalExpressionArray) {
             finalExpressionArray.splice(indexOfDivide - 1, 1);
             finalExpressionArray.splice(indexOfDivide - 1, 1);
             finalExpressionArray.splice(indexOfDivide - 1, 1);
-            finalExpressionArray.splice(indexOfDivide, 0, answer);
+            finalExpressionArray.splice(indexOfDivide - 1, 0, answer);
             finished = false;
         } else if (indexOfAdd != -1) {
             answer = finalExpressionArray[indexOfAdd - 1] + finalExpressionArray[indexOfAdd + 1];
             finalExpressionArray.splice(indexOfAdd - 1, 1);
             finalExpressionArray.splice(indexOfAdd - 1, 1);
             finalExpressionArray.splice(indexOfAdd - 1, 1);
-            finalExpressionArray.splice(indexOfAdd, 0, answer);
+            finalExpressionArray.splice(indexOfAdd - 1, 0, answer);
             finished = false;
         } else if (indexOfSubtract != -1) {
             answer = finalExpressionArray[indexOfSubtract - 1] - finalExpressionArray[indexOfSubtract + 1];
             finalExpressionArray.splice(indexOfSubtract - 1, 1);
             finalExpressionArray.splice(indexOfSubtract - 1, 1);
             finalExpressionArray.splice(indexOfSubtract - 1, 1);
-            finalExpressionArray.splice(indexOfSubtract, 0, answer);
+            finalExpressionArray.splice(indexOfSubtract - 1, 0, answer);
             finished = false;
         }
     }
@@ -158,9 +158,22 @@ document.getElementById("equals").addEventListener("click", function () {
 });
 
 document.getElementById("root").addEventListener("click", function () {
+    let isOperand = (expressionArray[expressionArray.length - 1] == " + " || expressionArray[expressionArray.length - 1] == " - " 
+        || expressionArray[expressionArray.length - 1] == " / " || expressionArray[expressionArray.length - 1] == " * ");
+
     if (expressionArray.length == 0) {
-        expressionArray.push("sqrt( ");
+        expressionArray.push(" sqrt( ");
         expressionArray.push("0 ");
+        expressionArray.push(" ) ");
+        showDisplay(expressionArray);
+    } else if (expressionArray.length == 1) {
+        expressionArray.splice(0, 0, " sqrt( ");
+        expressionArray.push(" ) ");
+        showDisplay(expressionArray);
+    } else if (expressionArray.length == 2 && isOperand == true) {
+        alert("Please select a number prior to pressing the Root button!")
+    } else if (expressionArray.length >= 3) {
+        expressionArray.splice(expressionArray.length - 1, 0, " sqrt( ");
         expressionArray.push(" ) ");
         showDisplay(expressionArray);
     } else {
