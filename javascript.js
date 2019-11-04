@@ -120,13 +120,58 @@ function spliceSaver(arrayToSplice, indexToSpliceFrom, answerToInsert){
     return arrayToSplice;
 }
 
-document.getElementById("equals").addEventListener("click", function () {
+function addButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" + ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" + ");
+        showDisplay(expressionArray);
+    }
+}
+
+function subtractButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" - ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" - ");
+        showDisplay(expressionArray);
+    }
+}
+
+function multiplyButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" * ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" * ");
+        showDisplay(expressionArray);
+    }
+}
+
+function divideButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" / ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" / ");
+        showDisplay(expressionArray);
+    }
+
+}
+
+function equalsButton(){
     let finalExpressionArray = [];
     let expression = "";
 
     for (let i = 0; i < expressionArray.length; i++) {
-        let isOperand = (expressionArray[i] == " + " || expressionArray[i] == " - " || 
-                        expressionArray[i] == " / " || expressionArray[i] == " * " );
+        let isOperand = (expressionArray[i] == " + " || expressionArray[i] == " - " ||
+            expressionArray[i] == " / " || expressionArray[i] == " * ");
         let isRoot = (expressionArray[i] == " sqrt( ");
         let endRoot = (expressionArray[i] == " ) ");
 
@@ -151,10 +196,10 @@ document.getElementById("equals").addEventListener("click", function () {
     }
 
     evaluateExpression(finalExpressionArray);
-});
+}
 
-document.getElementById("root").addEventListener("click", function () {
-    let isOperand = (expressionArray[expressionArray.length - 1] == " + " || expressionArray[expressionArray.length - 1] == " - " 
+function rootButton(){
+    let isOperand = (expressionArray[expressionArray.length - 1] == " + " || expressionArray[expressionArray.length - 1] == " - "
         || expressionArray[expressionArray.length - 1] == " / " || expressionArray[expressionArray.length - 1] == " * ");
 
     if (expressionArray.length == 0) {
@@ -177,124 +222,84 @@ document.getElementById("root").addEventListener("click", function () {
         expressionArray.push(" ) ");
         showDisplay(expressionArray);
     }
-});
+}
 
-
-
-
-document.getElementById("0").addEventListener("click", function(){
+function zeroButton(){
     expressionArray.push("0");
     showDisplay(expressionArray);
-});
+}
 
 
-document.getElementById("1").addEventListener("click", function(){
+function oneButton(){
     expressionArray.push("1");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("2").addEventListener("click", function(){
+function twoButton(){
     expressionArray.push("2");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("3").addEventListener("click", function(){
+function threeButton(){
     expressionArray.push("3");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("4").addEventListener("click", function(){
+function fourButton(){
     expressionArray.push("4");
     showDisplay(expressionArray);
-});
-
-document.getElementById("5").addEventListener("click", function(){
+}
+function fiveButton(){
     expressionArray.push("5");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("6").addEventListener("click", function(){
+function sixButton(){
     expressionArray.push("6");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("7").addEventListener("click", function(){
+function sevenButton(){
     expressionArray.push("7");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("8").addEventListener("click", function(){
+function eightButton(){
     expressionArray.push("8");
     showDisplay(expressionArray);
-});
+}
 
-document.getElementById("9").addEventListener("click", function(){
+function nineButton(){
     expressionArray.push("9");
     showDisplay(expressionArray);
-});
-
-document.getElementById("add").addEventListener("click", addButton);
-document.getElementById("subtract").addEventListener("click", subtractButton);
-document.getElementById("multiply").addEventListener("click", multiplyButton);
-document.getElementById("divide").addEventListener("click", divideButton);
-
-function addButton(){
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" + ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" + ");
-        showDisplay(expressionArray);
-    }
 }
 
-function subtractButton(){
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" - ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" - ");
-        showDisplay(expressionArray);
-    }
-}
-
-function multiplyButton(){
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" * ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" * ");
-        showDisplay(expressionArray);
-    }
-}
-
-function divideButton(){
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" / ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" / ");
-        showDisplay(expressionArray);
-    }
-
-}
-
-document.getElementById("clear").addEventListener("click", function(){
-   clearDisplay();
-});
-
-document.getElementById("delete").addEventListener("click", function(){
+function deleteButton() {
     if (expressionArray.length != 0) {
         expressionArray.pop();
         showDisplay(expressionArray);
     }
- });
+}
 
 
+document.getElementById("equals").addEventListener("click", equalsButton);
+document.getElementById("root").addEventListener("click", rootButton);
+document.getElementById("0").addEventListener("click", zeroButton);
+document.getElementById("1").addEventListener("click", oneButton);
+document.getElementById("2").addEventListener("click", twoButton);
+document.getElementById("3").addEventListener("click", threeButton);
+document.getElementById("4").addEventListener("click", fourButton);
+document.getElementById("5").addEventListener("click", fiveButton);
+document.getElementById("6").addEventListener("click", sixButton);
+document.getElementById("7").addEventListener("click", sevenButton);
+document.getElementById("8").addEventListener("click", eightButton);
+document.getElementById("9").addEventListener("click", nineButton);
+document.getElementById("add").addEventListener("click", addButton);
+document.getElementById("subtract").addEventListener("click", subtractButton);
+document.getElementById("multiply").addEventListener("click", multiplyButton);
+document.getElementById("divide").addEventListener("click", divideButton);
+document.getElementById("clear").addEventListener("click", clearDisplay);
+document.getElementById("delete").addEventListener("click", deleteButton);
 
 // document.getElementById("percent").addEventListener("click", function(){ });
 // document.getElementById("decimal").addEventListener("click", function(){ });
