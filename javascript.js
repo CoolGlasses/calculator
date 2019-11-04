@@ -81,6 +81,11 @@ function evaluateExpression(finalExpressionArray) { //accepts an array like this
             finalExpressionArray.splice(indexOfMultiply, 1, answer);
             finished = false;
         } else if (indexOfDivide != -1) {
+            if (finalExpressionArray[indexOfDivide + 1] == 0) {
+                displayBar.textContent = "ERROR";
+                alert("Cannot divide by zero!");
+                return displayBar.textContent = "ERROR";
+            }
             answer += finalExpressionArray[indexOfDivide - 1] / finalExpressionArray[indexOfDivide + 1];
             finalExpressionArray.splice(indexOfDivide - 1, 1);
             finalExpressionArray.splice(indexOfDivide - 1, 1);

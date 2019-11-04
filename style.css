@@ -21,7 +21,6 @@ body {
 
 .calc {
     display: grid;
-    
     background-color: gray;
     text-align: center;
     height: 400px;
