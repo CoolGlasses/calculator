@@ -78,18 +78,58 @@ function showDisplay(expressionArray) {
 }
 
 
-document.getElementById("0").addEventListener( function () {
 
+
+document.getElementById("0").addEventListener( function () {
+    expressionArray.push("0");
+    showDisplay(expressionArray);
 });
-document.getElementById("1").addEventListener();
-document.getElementById("2").addEventListener();
-document.getElementById("3").addEventListener();
-document.getElementById("4").addEventListener();
-document.getElementById("5").addEventListener();
-document.getElementById("6").addEventListener();
-document.getElementById("7").addEventListener();
-document.getElementById("8").addEventListener();
-document.getElementById("9").addEventListener();
+
+
+document.getElementById("1").addEventListener(function () {
+    expressionArray.push("1");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("2").addEventListener(function () {
+    expressionArray.push("2");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("3").addEventListener(function () {
+    expressionArray.push("3");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("4").addEventListener(function () {
+    expressionArray.push("4");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("5").addEventListener(function () {
+    expressionArray.push("5");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("6").addEventListener(function () {
+    expressionArray.push("6");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("7").addEventListener(function () {
+    expressionArray.push("7");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("8").addEventListener( function () {
+    expressionArray.push("8");
+    showDisplay(expressionArray);
+});
+
+document.getElementById("9").addEventListener(function () {
+    expressionArray.push("9");
+    showDisplay(expressionArray);
+});
 
 
 
