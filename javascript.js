@@ -1,3 +1,6 @@
+let expressionArray = [];
+
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -46,32 +49,17 @@ function operate(operator, num1, num2) {
     }
 }
 
-function addButtonValueToDisplay(buttonValue) {
-    let displayBar = document.querySelector("#display");
-    displayBar.textContent += buttonValue;
-}
 
-
-//Needs to take the textContent of the display div and turn it into an Array, then find the operands and seperate the numeric values between them, combining multi digit 
-//numbers ex. 5 4 * 3 7 should be 54 * 37, assign those numbers to variables and call the appropriate function to determine the result
-//must also perform the math in the correct order of operations
-function findResultOfDisplay(displayValue) {
-    let displayArray = [];
-    let displayString = displayValue;
-
-    displayArray = displayValue.split("");
-
-    for (let i = 0; i < displayArray.length; i++) {
-
-    }
-}
 
 function clearDisplay(displayValue) {
     let displayBar = document.querySelector("#display");
     displayBar.textContent = "";
 }
 
-
+function showDisplay(expressionArray) {
+    let displayBar = document.querySelector("#dispaly");
+    displayBar.textContent = expressionArray.join(" ");
+}
 
 
 
