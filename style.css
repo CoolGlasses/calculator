@@ -6,11 +6,15 @@
 header {
     display: grid;
     justify-content: center;
-    border: 1px solid black;
+    font-size: 80px;
+    font-family: "Times New Roman";
+
 }
 
 body {
     background-color: papayawhip;
+    font-family: "Times New Roman";
+    font-size: 24px;
 }
 
 #bodyWrapper {
@@ -20,25 +24,43 @@ body {
 
 #leftParagraph {
     display: grid;
+    height: 550px;
+    justify-content: center;
+    align-content: top;
+    text-align: center;
 }
 
-#rightPargraph {
+.pHeader {
     display: grid;
+    justify-content: center;
+    align-content: top;
+    text-align: center;
 }
+
+#rightParagraph {
+    display: grid;
+    height: 550px;
+    justify-content: center;
+    align-content: top;
+}
+
 
 #container {
     display: grid;
     justify-content: center;
     font-size: 40px;
+    margin: 15px;
 }
 
 .calc {
     display: grid;
+    gap: 15px;
     background-color: gray;
     text-align: center;
-    height: 400px;
-    width: 400px;
-    border: 1px solid black;
+    height: 550px;
+    width: 450px;
+    border-radius: 5px;
+    border: 10px outset gray;
     grid-template-columns: repeat(var(--colNum), auto);
     grid-template-rows: repeat(var(--rowNum), auto);
     grid-template-areas:
@@ -52,6 +74,7 @@ body {
 
 .calcDisplay {
     display: grid;
+    border: 10px inset black;
     grid-area: display;
     height: 82px;
     margin: 4px;
@@ -63,7 +86,8 @@ body {
 
 .calcNumber {
     display: grid;
-    border: 1px solid black;
+    border-radius: 100%;
+    border: 5px outset goldenrod;
     align-content: center;
     cursor: pointer;
 }
@@ -115,7 +139,8 @@ body {
 
 .calcOperand {
     display: grid;
-    border: 1px solid black;
+    border-radius: 100%;
+    border: 5px outset goldenrod;
     align-content: center;
     background-color: darkgoldenrod;
     cursor: pointer;
@@ -155,7 +180,8 @@ body {
 
 .calcButton {
     display: grid;
-    border: 1px solid black;
+    border-radius: 100%;
+    border: 5px outset goldenrod;
     align-content: center;
     cursor: pointer;
 }
@@ -190,7 +216,8 @@ body {
 
 .resultButton {
     display: grid;
-    border: 1px solid black;
+    border-radius: 100%;
+    border: 5px outset goldenrod;
     align-content: center;
     cursor: pointer;
 }
@@ -205,4 +232,5 @@ body {
 
 footer {
     border: 1px solid black;
+    margin: 15px;
 }

@@ -8,13 +8,16 @@
 </head>
 
 <header>
-    My Calculator
+    Classic Calculator
 </header>
 <body>
     <div id="bodyWrapper">
-    <div id="leftParagraph">Keyboard functionality is supported!  Please note: Pressing the "c" key will clear the calculator!</div>
+    <div id="leftParagraph">
+        <h2 class="pHeader">Keyboard functionality is supported!</h2>
+    </div>
     <div id="container" class="container">
-        <div id="calc" class="calc" style="--colNum:4; --rowNum:6;">
+        <div id="calcWrapper">
+          <div id="calc" class="calc" style="--colNum:4; --rowNum:6;">
             <div id="display" class="calcDisplay"></div>
             <div id="0" class="calcNumber">0</div>
             <div id="1" class="calcNumber">1</div>
@@ -42,9 +45,19 @@
                 <img src="iconfinder_percent_1608788.png">
             </div>
             <div id="decimal" class="calcButton">.</div>
+          </div>
         </div>
     </div>
-    <div id="rightParagraph">This is the paragraph on the right!</div>
+    <div id="rightParagraph">
+        <h2 class="pHeader">Helpful Tips</h2>
+        <ul style="list-style-type:circle">
+            <li>Pressing the "c" key will clear the calculator.</li>
+            <li>This Calculator follows the rules regarding Order of Operations.</li>
+            <li>Pressing " = " will allow you to see the result, until then the equation will be dispalyed.</li>
+            <li>Press the Root button after a the number you want to run the operation for.</li>
+            <li>Hit/Clicked the wrong button? Press Backspace to delete the last entry!</li>
+        </ul>
+    </div>
     </div>
 </body>
 <footer>
