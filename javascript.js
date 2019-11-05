@@ -130,27 +130,29 @@ function equalsButton(){
         let isRoot = (expressionArray[i] == " sqrt( ");
         let endRoot = (expressionArray[i] == " ) ");
         let isPercent = (expressionArray[i] == "% ");
+        let isDecimal = (expressionArray[i] == ".");
 
+        
         if (isPercent == true) {
-            finalExpressionArray.push(parseInt(expression, 10));
+            finalExpressionArray.push(parseFloat(expression, 10));
             let lastElement = finalExpressionArray.pop();
             finalExpressionArray.push(lastElement / 100);
             expression = "";
         } else if (isRoot == true) {
             finalExpressionArray.push(expressionArray[i]);
         } else if (endRoot == true) {
-            finalExpressionArray.push(parseInt(expression, 10));
+            finalExpressionArray.push(parseFloat(expression, 10));
             finalExpressionArray.push(expressionArray[i]);
             expression = "";
         } else if (isOperand == true && expression == "") {
             finalExpressionArray.push(expressionArray[i]);
         } else if (isOperand == true && expression != "") {
-            finalExpressionArray.push(parseInt(expression, 10));
+            finalExpressionArray.push(parseFloat(expression, 10));
             finalExpressionArray.push(expressionArray[i]);
             expression = "";
         } else if (i == expressionArray.length - 1) {
             expression += expressionArray[i];
-            finalExpressionArray.push(parseInt(expression, 10));
+            finalExpressionArray.push(parseFloat(expression, 10));
         } else {
             expression += expressionArray[i];
         }
@@ -183,6 +185,11 @@ function rootButton(){
         expressionArray.push(" ) ");
         showDisplay(expressionArray);
     }
+}
+
+function decimalButton(){
+    expressionArray.push(".");
+    showDisplay(expressionArray);
 }
 
 function percentButton(){
@@ -343,6 +350,7 @@ document.getElementById("7").addEventListener("click", sevenButton);
 document.getElementById("8").addEventListener("click", eightButton);
 document.getElementById("9").addEventListener("click", nineButton);
 document.getElementById("add").addEventListener("click", addButton);
+document.getElementById("decimal").addEventListener("click", decimalButton);
 document.getElementById("subtract").addEventListener("click", subtractButton);
 document.getElementById("multiply").addEventListener("click", multiplyButton);
 document.getElementById("divide").addEventListener("click", divideButton);
@@ -358,5 +366,5 @@ window.addEventListener("keydown", keyboardReaction);
 
 
 
-// document.getElementById("decimal").addEventListener("click", function(){ });
+
 
