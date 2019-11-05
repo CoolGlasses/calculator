@@ -49,8 +49,6 @@ function operate(operator, num1, num2) {
     }
 }
 
-
-
 function clearDisplay() {
     let displayBar = document.querySelector("#display");
     displayBar.textContent = "";
@@ -65,6 +63,7 @@ function showDisplay(expressionArray) {
 function evaluateExpression(finalExpressionArray) { 
     //accepts an array like this:  [456, " + ", 789, " * ", 123]
     //accepts sqrt like this: [ 1, " + ", "sqrt( ", 5, " )"] or [" sqrt( ", 4, " ) ", " + ", 2]
+ 
     let displayBar = document.querySelector("#display");
     let finished = false;
     let answer = 0;
@@ -120,50 +119,6 @@ function spliceSaver(arrayToSplice, indexToSpliceFrom, answerToInsert){
     return arrayToSplice;
 }
 
-function addButton() {
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" + ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" + ");
-        showDisplay(expressionArray);
-    }
-}
-
-function subtractButton() {
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" - ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" - ");
-        showDisplay(expressionArray);
-    }
-}
-
-function multiplyButton() {
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" * ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" * ");
-        showDisplay(expressionArray);
-    }
-}
-
-function divideButton() {
-    if (expressionArray.length == 0) {
-        expressionArray.push("0");
-        expressionArray.push(" / ");
-        showDisplay(expressionArray);
-    } else {
-        expressionArray.push(" / ");
-        showDisplay(expressionArray);
-    }
-
-}
 
 function equalsButton(){
     let finalExpressionArray = [];
@@ -174,8 +129,14 @@ function equalsButton(){
             expressionArray[i] == " / " || expressionArray[i] == " * ");
         let isRoot = (expressionArray[i] == " sqrt( ");
         let endRoot = (expressionArray[i] == " ) ");
+        let isPercent = (expressionArray[i] == "% ");
 
-        if (isRoot == true) {
+        if (isPercent == true) {
+            finalExpressionArray.push(parseInt(expression, 10));
+            let lastElement = finalExpressionArray.pop();
+            finalExpressionArray.push(lastElement / 100);
+            expression = "";
+        } else if (isRoot == true) {
             finalExpressionArray.push(expressionArray[i]);
         } else if (endRoot == true) {
             finalExpressionArray.push(parseInt(expression, 10));
@@ -222,6 +183,56 @@ function rootButton(){
         expressionArray.push(" ) ");
         showDisplay(expressionArray);
     }
+}
+
+function percentButton(){
+    expressionArray.push("% ");
+    showDisplay(expressionArray);
+}
+
+function addButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" + ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" + ");
+        showDisplay(expressionArray);
+    }
+}
+
+function subtractButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" - ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" - ");
+        showDisplay(expressionArray);
+    }
+}
+
+function multiplyButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" * ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" * ");
+        showDisplay(expressionArray);
+    }
+}
+
+function divideButton() {
+    if (expressionArray.length == 0) {
+        expressionArray.push("0");
+        expressionArray.push(" / ");
+        showDisplay(expressionArray);
+    } else {
+        expressionArray.push(" / ");
+        showDisplay(expressionArray);
+    }
+
 }
 
 function zeroButton(){
@@ -336,6 +347,7 @@ document.getElementById("subtract").addEventListener("click", subtractButton);
 document.getElementById("multiply").addEventListener("click", multiplyButton);
 document.getElementById("divide").addEventListener("click", divideButton);
 document.getElementById("root").addEventListener("click", rootButton);
+document.getElementById("percentage").addEventListener("click", percentButton);
 document.getElementById("clear").addEventListener("click", clearDisplay);
 document.getElementById("delete").addEventListener("click", deleteButton);
 document.getElementById("equals").addEventListener("click", equalsButton);
@@ -346,6 +358,5 @@ window.addEventListener("keydown", keyboardReaction);
 
 
 
-// document.getElementById("percent").addEventListener("click", function(){ });
 // document.getElementById("decimal").addEventListener("click", function(){ });
 
