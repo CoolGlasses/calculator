@@ -281,9 +281,46 @@ function deleteButton() {
     }
 }
 
+function keyboardReaction(e){
+    let press = e.which || e.keycode;
 
-document.getElementById("equals").addEventListener("click", equalsButton);
-document.getElementById("root").addEventListener("click", rootButton);
+    if (press == 48 || press == 96) {
+        zeroButton();
+    } else if (press == 49 || press == 97) {
+        oneButton();
+    } else if (press == 50 || press == 98) {
+        twoButton();
+    } else if (press == 51 || press == 99) {
+        threeButton();
+    } else if (press == 52 || press == 100) {
+        fourButton();
+    } else if (press == 53 || press == 101) {
+        fiveButton();
+    } else if (press == 54 || press == 102) {
+        sixButton();
+    } else if (press == 55 || press == 103) {
+        sevenButton();
+    } else if (press == 56 || press == 104) {
+        eightButton();
+    } else if (press == 57 || press == 105) {
+        nineButton();
+    } else if (press == 173 || press == 109) {
+        subtractButton();
+    } else if (press == 107) {
+        addButton();
+    } else if (press == 111) {
+        divideButton();
+    } else if (press == 106) {
+        multiplyButton();
+    } else if (press == 13) {
+        equalsButton();
+    } else if (press == 8) {
+        deleteButton();
+    } else if (press == 67) {
+        clearDisplay();
+    }
+}
+
 document.getElementById("0").addEventListener("click", zeroButton);
 document.getElementById("1").addEventListener("click", oneButton);
 document.getElementById("2").addEventListener("click", twoButton);
@@ -298,8 +335,16 @@ document.getElementById("add").addEventListener("click", addButton);
 document.getElementById("subtract").addEventListener("click", subtractButton);
 document.getElementById("multiply").addEventListener("click", multiplyButton);
 document.getElementById("divide").addEventListener("click", divideButton);
+document.getElementById("root").addEventListener("click", rootButton);
 document.getElementById("clear").addEventListener("click", clearDisplay);
 document.getElementById("delete").addEventListener("click", deleteButton);
+document.getElementById("equals").addEventListener("click", equalsButton);
+
+window.addEventListener("keydown", keyboardReaction);
+
+
+
+
 
 // document.getElementById("percent").addEventListener("click", function(){ });
 // document.getElementById("decimal").addEventListener("click", function(){ });
