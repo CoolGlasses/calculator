@@ -92,6 +92,14 @@ body {
     cursor: pointer;
 }
 
+.calcNumber:active {
+    display: grid;
+    border-radius: 100%;
+    border: 5px inset goldenrod;
+    align-content: center;
+    cursor: pointer;
+}
+
 .calcNumber:hover {
     background-color: black;
     color: white;
@@ -146,6 +154,15 @@ body {
     cursor: pointer;
 }
 
+.calcOperand:active {
+    display: grid;
+    border-radius: 100%;
+    border: 5px inset goldenrod;
+    align-content: center;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+}
+
 .calcOperand:hover {
     background-color: gold;
 }
@@ -186,6 +203,13 @@ body {
     cursor: pointer;
 }
 
+.calcButton:active {
+    display: grid;
+    border-radius: 100%;
+    border: 5px inset goldenrod;
+    align-content: center;
+    cursor: pointer;
+}
 
 #clear {
     grid-area: clear;
@@ -218,6 +242,14 @@ body {
     display: grid;
     border-radius: 100%;
     border: 5px outset goldenrod;
+    align-content: center;
+    cursor: pointer;
+}
+
+.resultButton:active {
+    display: grid;
+    border-radius: 100%;
+    border: 5px inset goldenrod;
     align-content: center;
     cursor: pointer;
 }
